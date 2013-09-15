@@ -89,7 +89,12 @@ function buildPrivatePub(doc) {
 
     subscribe: function(channel, callback) {
       self.subscriptionCallbacks[channel] = callback;
+    },
+    
+    removeSubscription: function(channel) {
+      delete self.subscriptionCallbacks[channel];   
     }
+
   };
   return self;
 }
