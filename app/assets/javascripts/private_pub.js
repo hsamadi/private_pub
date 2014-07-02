@@ -14,9 +14,10 @@ function buildPrivatePub(doc) {
         self.fayeCallbacks.push(callback);
         if (self.subscriptions.server && !self.connecting) {
           self.connecting = true;
+          var scriptName = self.subscriptions.server.match(/(?:.*)\/(.*)$/)[1];
           var script = doc.createElement("script");
           script.type = "text/javascript";
-          script.src = self.subscriptions.server + ".js";
+          script.src = self.subscriptions.server + "/" + scriptName + ".js";
           script.onload = self.connectToFaye;
           doc.documentElement.appendChild(script);
         }
